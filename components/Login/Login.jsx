@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { Input, Form, Button } from 'reactstrap';
 import './Login.scss';
 import { Route } from 'react-router-dom';
-import service from '../../api/service';
+// import service from '../../api/service';
 import { Redirect, Link, withRouter } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 import { NotificationManager } from 'react-notifications';
 import Loader from 'react-loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import logo from '../Layout/Images/abhra_logo.png';
+import logo from 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2F%40shakungrover01%2Fwhy-we-use-react-js-in-website-development-process-7a4f49053813&psig=AOvVaw17n-n0p30-pe5lpicu182I&ust=1639721436100000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJD3p8HU5_QCFQAAAAAdAAAAABAD';
 import options from '../Layout/Loading';
 import Dashboard from '../Dashboard/Dashboard';
 import { connect } from 'react-redux';
 
 const optionsLoad = new options();
-const API = new service();
+// const API = new service();
 
 class Login extends Component {
   constructor(props) {
@@ -96,25 +96,25 @@ class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.setState({ loaded: false });
-    API.login(this.state).then((response) => {
-      this.setState({ loaded: true });
-      //console.log(response)
-      if (response.success === 'true') {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('email', response.details.recruiter_email);
-        this.props.onSaveEmail(response.details.recruiter_email);
-        localStorage.setItem('ID', response.details.recruiter_id);
-        NotificationManager.success(response.message, 'LOGIN', 1000);
-        this.setRedirect();
-        this.props.ValidatingUser(true);
-        // console.log('success',this.state.redirect);
-      } else if (response.success === 'false') {
-        NotificationManager.error(response.error);
-      } else {
-        //console.log("Login Error");
-        NotificationManager.error('Network issue');
-      }
-    });
+    // API.login(this.state).then((response) => {
+    //   this.setState({ loaded: true });
+    //   //console.log(response)
+    //   if (response.success === 'true') {
+    //     localStorage.setItem('token', response.token);
+    //     localStorage.setItem('email', response.details.recruiter_email);
+    //     this.props.onSaveEmail(response.details.recruiter_email);
+    //     localStorage.setItem('ID', response.details.recruiter_id);
+    //     NotificationManager.success(response.message, 'LOGIN', 1000);
+    //     this.setRedirect();
+    //     this.props.ValidatingUser(true);
+    //     // console.log('success',this.state.redirect);
+    //   } else if (response.success === 'false') {
+    //     NotificationManager.error(response.error);
+    //   } else {
+    //     //console.log("Login Error");
+    //     NotificationManager.error('Network issue');
+    //   }
+    // });
   };
 
   setRedirect = () => {
